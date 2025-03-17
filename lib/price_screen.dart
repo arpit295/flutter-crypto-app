@@ -13,6 +13,8 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'USD';
+  String newSelectedCurrency = 'USD'; // TEMP currency for selection
+
   bool showSpinner = true;
 
   DropdownButton<String> androidDropDownButton() {
@@ -90,7 +92,7 @@ class _PriceScreenState extends State<PriceScreen> {
         ],
         onChanged: (value) {
           setState(() {
-            selectedCurrency = value!;
+            newSelectedCurrency = value!;
             getData();
           });
         });
@@ -100,9 +102,8 @@ class _PriceScreenState extends State<PriceScreen> {
     return CupertinoPicker(
       itemExtent: 40,
       onSelectedItemChanged: (selectedIndex) {
-        print(selectedIndex);
         setState(() {
-          selectedCurrency = currenciesList[selectedIndex];
+          newSelectedCurrency = currenciesList[selectedIndex];
           getData();
         });
       },
@@ -153,6 +154,7 @@ class _PriceScreenState extends State<PriceScreen> {
         bitCoinValue = btcdata.toStringAsFixed(0);
         ethereumCoinValue = ethdata.toStringAsFixed(0);
         litecoinCoinValue = ltcdata.toStringAsFixed(0);
+        selectedCurrency = newSelectedCurrency;
       });
     } catch (e) {
       print(e);
