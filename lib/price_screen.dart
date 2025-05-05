@@ -146,9 +146,9 @@ class _PriceScreenState extends State<PriceScreen> {
       showSpinner = true;
     });
     try {
-      double btcdata = await CoinData().getCoinData(selectedCurrency, 'BTC');
-      double ethdata = await CoinData().getCoinData(selectedCurrency, 'ETH');
-      double ltcdata = await CoinData().getCoinData(selectedCurrency, 'LTC');
+      double btcdata = await CoinData().getCoinData('BTC', newSelectedCurrency);
+      double ethdata = await CoinData().getCoinData('ETH', newSelectedCurrency);
+      double ltcdata = await CoinData().getCoinData('LTC', newSelectedCurrency);
 
       setState(() {
         bitCoinValue = btcdata.toStringAsFixed(0);

@@ -29,7 +29,7 @@ List<String> cryptoCurrencyList = [
 
 class CoinData {
   Future<dynamic> getCoinData(
-      String selectedCurrency, String selectedcrypto) async {
+      String selectedcrypto, String selectedCurrency) async {
     Response response = await get(Uri.parse(
         'https://rest.coinapi.io/v1/exchangerate/$selectedcrypto/$selectedCurrency?apikey=086621f1-8711-4032-9f00-05896f175816'));
 
